@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>💕 Para cheerful 💕</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: rgb(37, 34, 34);
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    /* ======== CORAZONES ======== */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: float 6s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: 10px; top: 0; }
+
+    /* ======== FRASES ======== */
+    .phrase {
+      position: absolute;
+      max-width: 250px;
+      padding: 10px 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      background: rgba(38, 0, 255, 0.8);
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+      animation: float 8s linear infinite;
+    }
+
+    /* ======== IMÁGENES ======== */
+    .floating-img {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      animation: float 10s linear infinite;
+    }
+
+    /* ======== ANIMACIÓN ======== */
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Generar corazones
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+
+    // Lista de frases
+    const frases = [
+      "💖 Feliz cumpleaños 💖",
+      "💖 Feliz cumpleaños Corazón💖",
+      "🌹 Te quierrrrrro 🌹",
+      "✨ cheerful ✨",
+      "💕 Pedacito de manteca, con cara de muñeco 💕",
+      "🥰 Me encantas 🥰",
+      "💕 Firma shrek, FIRMAAAAAAAA 💕",
+      "💕 Eres como el vino, entre más viejo más Divino 🥰",
+      "🥰 Cherfulcino 🥰",
+    ];
+
+    // Generar frases
+    function createPhrase() {
+      const phrase = document.createElement("div");
+      phrase.className = "phrase";
+      phrase.innerText = frases[Math.floor(Math.random() * frases.length)];
+      phrase.style.left = Math.random() * (window.innerWidth - 250) + "px";
+      phrase.style.animationDuration = (6 + Math.random() * 4) + "s";
+      document.body.appendChild(phrase);
+      setTimeout(() => phrase.remove(), 10000);
+    }
+
+    // Lista de imágenes (puedes poner tus propias rutas)
+    const imagenes = [
+      "david.jpg",
+      "david bello.jpg",
+      "david guapo.jpg", 
+      "flork.png", 
+      "amorrr.png",
+      "images.png",
+      "feliz.jpg",
+      "cumpleaños.jpg",
+      "beso.png",
+      "atrevido.jpg",
+      "pollo.jpg"
+    ];
+
+    // Generar imágenes flotantes
+    function createImage() {
+      const img = document.createElement("img");
+      img.className = "floating-img";
+      img.src = imagenes[Math.floor(Math.random() * imagenes.length)];
+      img.style.left = Math.random() * (window.innerWidth - 60) + "px";
+      img.style.animationDuration = (6 + Math.random() * 6) + "s";
+      document.body.appendChild(img);
+      setTimeout(() => img.remove(), 12000);
+    }
+
+    // Intervalos
+    setInterval(createHeart, 300);   // cada 300ms aparece un corazón
+    setInterval(createPhrase, 4000); // cada 4s aparece una frase
+    setInterval(createImage, 6000);  // cada 5s aparece una imagen
+  </script>
+</body>
+</html>
+
+
+
+
+
+
